@@ -57,8 +57,9 @@ public class ConsignmentController {
 				.orElseThrow(() -> new RuntimeException("Requested Consignments not found" + id));
 		existing.setConsignmentStatus(consignment.getConsignmentStatus() != null ? consignment.getConsignmentStatus()
 				: existing.getConsignmentStatus());
-		existing.setConsignmentCatogery(consignment.getConsignmentCatogery() != null
-				? consignment.getConsignmentCatogery() : existing.getConsignmentCatogery());
+		existing.setConsignmentCatogery(
+				consignment.getConsignmentCatogery() != null ? consignment.getConsignmentCatogery()
+						: existing.getConsignmentCatogery());
 		existing.setDeleveryPartner(consignment.getDeleveryPartner() != null ? consignment.getDeleveryPartner()
 				: existing.getDeleveryPartner());
 		consignmentRepository.save(existing);
@@ -66,15 +67,13 @@ public class ConsignmentController {
 
 	}
 
-	/*
-	 * @GetMapping(name = "/getAllConsignmentById/{id}") public Consignment
-	 * getAllConsignmentById(@PathVariable Integer id) { System.out.println(
-	 * " ConsignmentController -> getAllConsignmentById() "); return
-	 * consignmentRepository.findById(id) .orElseThrow(() -> new
-	 * RuntimeException("Requested Consignments not found" + id));
-	 * 
-	 * }
-	 */
+	@GetMapping(name = "/getAllConsignmentById/{id}")
+	public Consignment getAllConsignmentById(@PathVariable Integer id) {
+		System.out.println(" ConsignmentController -> getAllConsignmentById() ");
+		return consignmentRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Requested Consignments not found" + id));
+
+	}
 
 	@DeleteMapping("/deleteConsignment/{id}")
 	public String deleteConsignment(@PathVariable Integer id) {
