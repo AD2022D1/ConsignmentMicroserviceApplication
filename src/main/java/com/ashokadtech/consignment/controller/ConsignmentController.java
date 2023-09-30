@@ -71,7 +71,7 @@ public class ConsignmentController {
 	public Consignment getAllConsignmentById(@PathVariable Integer id) {
 		System.out.println(" ConsignmentController -> getAllConsignmentById() ");
 		return consignmentRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Requested Consignments not found" + id));
+				.orElseThrow(() -> new RuntimeException("Requested Consignments are not found" + id));
 
 	}
 
